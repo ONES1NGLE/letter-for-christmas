@@ -22,8 +22,9 @@
             align-items: center;
             background: var(--color-bg-gradient);
             font-family: var(--font-body);
-            overflow: hidden;
             perspective: 2000px; 
+            padding-bottom: 50px;
+            padding-top: 50px
         }
 
         .scene {
@@ -120,7 +121,7 @@
         /* --- ТИПОГРАФИКА И КОНТЕНТ --- */
         .front-decor { font-size: 8rem; animation: float 4s ease-in-out infinite; }
         .front-title { font-family: var(--font-hand); font-size: 4rem; color: var(--color-gold); line-height: 1.1; margin-top: 10px; text-align: center;}
-        .front-subtitle { font-size: 1.3rem; margin-top: 20px; letter-spacing: 2px; color: rgba(255,255,255,0.8); text-transform: uppercase; }
+        .front-subtitle { font-size: 1.3rem; margin-top: 20px; letter-spacing: 2px; color: rgba(255,255,255,0.8); text-transform: uppercase; text-align: center; justify-self: center;}
         
         .motivation-text {
             font-family: var(--font-hand);
@@ -161,10 +162,11 @@
         .click-hint { position: absolute; bottom: 30px; font-size: 1rem; color: var(--color-gold); opacity: 0.7; animation: pulse 2s infinite; }
         @keyframes pulse { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
 
+
+
         @media (max-width: 600px) {
             .card.is-open { transform: translateX(5%); } /* Меньший сдвиг на мобильных */
             .card.is-open .cover-wrapper { transform: rotateY(-180deg); }
             .front-title { font-size: 3rem; }
             .motivation-text { font-size: 2.5rem; }
-
         }
