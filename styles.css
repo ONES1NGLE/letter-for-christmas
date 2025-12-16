@@ -12,6 +12,8 @@
 	--anim-speed: 1s;
 	--anim-ease: cubic-bezier(0.25, 1, 0.5, 1);
     --color-bg-overlay: rgba(0, 0, 0, 0.4);
+    --card-width: 500px;
+    --card-height: 700px;
 }
 
 * {
@@ -308,7 +310,49 @@ body {
 		opacity: 0.4;
 	}
 }
+/* --- Медиа-запрос для телефонов и небольших планшетов --- */
+@media (max-width: 768px) {
+    
+    /* 1. Масштабируем сцену и карточку, используя viewport width */
+    .scene, .card {
+        /* Открытка займет 90% от ширины экрана. 
+           Это оставляет 5% по краям для отступов. */
+        width: 90vw; 
+        
+        /* Устанавливаем высоту пропорционально (700/500 = 1.4) */
+        height: calc(90vw * 1.4); 
+        
+        /* Добавляем минимальный отступ, если открытка выше экрана */
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
 
+    /* 2. Корректируем шрифты (чтобы не съезжали) */
+    .front-title { 
+        font-size: 3rem; /* Уменьшаем с 4rem */
+    }
+    .front-subtitle { 
+        font-size: 0.9rem; /* Уменьшаем с 1.3rem */
+    }
+    .letter-header h2 { 
+        font-size: 2.2rem; 
+    }
+    .letter-body { 
+        font-size: 1.05rem; 
+    }
+    
+    /* 3. Корректируем сдвиг при открытии */
+    .card.is-open { 
+        /* Сдвигаем на меньшее расстояние, чтобы вся открытка осталась на экране */
+        transform: translateX(10%); 
+    }
+    
+    /* 4. Скроллинг письма */
+    .letter-scroll {
+        /* Уменьшаем отступ справа, чтобы было больше места для текста */
+        padding-right: 5px; 
+    }
+}
 @media (max-width: 600px) {
 	.card.is-open {
 		transform: translateX(5%);
