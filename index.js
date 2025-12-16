@@ -78,8 +78,38 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// Генератор снега - ОСТАВЛЯЕМ БЕЗ ИЗМЕНЕНИЙ
+// Генератор снега
 function createSnow() {
-    // ... ваш код генератора снега ...
+    // ВАЖНО: Получаем контейнер
+    const container = document.getElementById('snow-container'); 
+    const symbols = ['❄', '❅', '❆', '•'];
+    
+    // Интервал для создания новых снежинок
+    setInterval(() => {
+        const flake = document.createElement('div');
+        flake.classList.add('snowflake');
+        flake.innerText = symbols[Math.floor(Math.random() * symbols.length)];
+        
+        // Рандомизация стилей (позиция, размер, прозрачность)
+        flake.style.left = Math.random() * 100 + 'vw';
+        flake.style.fontSize = (Math.random() * 15 + 10) + 'px';
+        flake.style.opacity = Math.random();
+        
+        // Настройка анимации
+        const duration = Math.random() * 3 + 4; 
+        flake.style.transition = `top ${duration}s linear, transform ${duration}s ease-in-out`;
+        
+        // КЛЮЧЕВОЙ ШАГ: Добавление снежинки в контейнер
+        container.appendChild(flake); 
+        
+        // Запуск анимации (меняем позицию TOP)
+        requestAnimationFrame(() => {
+            flake.style.top = '105vh';
+            flake.style.transform = `translateX(${Math.random() * 100 - 50}px) rotate(${Math.random() * 360}deg)`;
+        });
+        
+        // Удаление снежинки после завершения анимации
+        setTimeout(() => { flake.remove(); }, duration * 1000);
+    }, 200);
 }
 createSnow();
