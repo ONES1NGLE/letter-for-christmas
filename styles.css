@@ -36,7 +36,7 @@ body {
         linear-gradient(var(--color-bg-overlay), var(--color-bg-overlay)), 
         
         /* 2. Само изображение (Зимний лес) */
-        url('/img/snow.jpg'); 
+        url('./img/snow.jpg'); 
         
     background-size: cover; 
     background-position: center center;
