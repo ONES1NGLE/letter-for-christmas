@@ -1,7 +1,7 @@
 :root {
 	--card-width: 500px;
 	--card-height: 700px;
-	--color-bg-gradient: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
+	--color-bg-gradient: linear-gradient(135deg, #0f2027, #0d443c, #006064);
 	--color-card-front-grad: linear-gradient(135deg, #8e0e00, #1f1c18);
 	--color-gold: #ffd700;
 	--color-paper: #fdfbf7;
@@ -11,6 +11,7 @@
 	--font-body: 'Cormorant Garamond', serif;
 	--anim-speed: 1s;
 	--anim-ease: cubic-bezier(0.25, 1, 0.5, 1);
+    --color-bg-overlay: rgba(0, 0, 0, 0.4);
 }
 
 * {
@@ -20,15 +21,30 @@
 }
 
 body {
-	min-height: 100vh;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background: var(--color-bg-gradient);
-	font-family: var(--font-body);
-	perspective: 2000px;
-	padding-bottom: 50px;
-	padding-top: 50px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* УДАЛИТЕ СТАРУЮ СТРОКУ: background: var(--color-bg-gradient); */
+    
+    /* --- НОВЫЙ ФОН С ИЗОБРАЖЕНИЕМ --- */
+    background: 
+        /* 1. Темный оверлей для контраста с текстом */
+        linear-gradient(var(--color-bg-overlay), var(--color-bg-overlay)), 
+        
+        /* 2. Само изображение (Зимний лес) */
+        url('/img/snow.jpg'); 
+        
+    background-size: cover; 
+    background-position: center center;
+    background-attachment: fixed; /* Чтобы фон не двигался при прокрутке */
+    
+    font-family: var(--font-body);
+    /* overflow: hidden; (Возможно, вы это удалили для мобильной версии, если нет - удалите) */
+    perspective: 2000px; 
+    padding-bottom: 20px; 
+    overflow: hidden;
 }
 
 .scene {
